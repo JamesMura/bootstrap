@@ -12,12 +12,27 @@ Contains information and scripts to get a development machine up and running ver
 
 # Developer Machine installation (OS X Mountain Lion)
 
-Some prerequisites:
 
+Some prerequisites:
+    
+    Git + Github account + Gravatar image
     Homebrew (https://github.com/mxcl/homebrew/wiki/Installation)
     Python (not 3, 2.7)
     VirtualEnv (Like rvm for ruby, manages versions of Python)
     Postgresql 9.1 (http://postgresapp.com/)
+
+Create somewhere to store all the stuff, e.g.
+
+    $ mkdir -p ~/Code/unicef/ureport
+
+First clone this repository so that you can update this doc or the developer-faq with anything you learn!
+
+    $ cd ~/Code/unicef/ureport    
+    $ git clone git@github.com:unicef-ureport/bootstrap.git
+    
+Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
+
+    $ mkdir -p ~/Code/unicef/ureport/virtualenv
 
 
 Then your pip
@@ -25,9 +40,6 @@ Then your pip
     $ sudo easy_install pip
     $ pip install virtualenv
 
-Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
-
-    $ mkdir -p ~/Code/unicef/virtualenv
 
 Go in there and run virtualenv
 
@@ -37,9 +49,13 @@ Go in there and run virtualenv
 Go back and clone the repo:
 
     $ cd ..
-    $ git clone git@github.com:unicefuganda/ureport.git ureport-repo
-    $ cd ureport-repo/ureport-project
+    $ git clone git@github.com:unicefuganda/ureport.git original-repo
+    
+    <nimrod: ask us about submodules!!>
+    
+    $ cd original-repo/ureport-project
     $ pip install -r pip-requires.txt
+    
 
 
 Now make sure you have postgress installed and running...
