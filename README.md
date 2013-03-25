@@ -8,6 +8,9 @@ Contains information and scripts to get a development machine up and running ver
     VirtualEnv (Like rvm for ruby, manages versions of Python)
     Django 1.3
     Postgresql 9.1
+    Rackspace
+    Chef
+    Newrelic
 
 
 # Developer Machine installation (OS X Mountain Lion)
@@ -16,10 +19,15 @@ Contains information and scripts to get a development machine up and running ver
 Some prerequisites:
     
     Git + Github account + Gravatar image
+    Rackspace account
+    Newrelic account
     Homebrew (https://github.com/mxcl/homebrew/wiki/Installation)
     Python (not 3, 2.7)
     VirtualEnv (Like rvm for ruby, manages versions of Python)
     Postgresql 9.1 (http://postgresapp.com/)
+    Chef and chef client
+    Rackspace client
+    
 
 Create somewhere to store all the stuff, e.g.
 
@@ -43,20 +51,28 @@ Then your pip
 
 Go in there and run virtualenv
 
-    $ cd ~/Code/unicef/virtualenv
+    $ cd ~/Code/unicef/ureport/virtualenv
     $ virtualenv --no-site-packages ureport
     
-Go back and clone the repo:
+Go back and clone the repos:
 
     $ cd ..
     $ git clone git@github.com:unicefuganda/ureport.git original-repo
     
     <nimrod: ask us about submodules!!>
     
-    $ cd original-repo/ureport-project
+    $ git clone 
+    
+Configure your python environment     
+    
+    $ cd ~/Code/unicef/ureport/original-repo/ureport-project
     $ pip install -r pip-requires.txt
     
+You can see if this works by 
 
+    $ pip freeze
+    
+It should show you all the libraries that are in pip-install.txt
 
 Now make sure you have postgress installed and running...
 
@@ -76,5 +92,11 @@ You should also be able to do :
     $ psql
     
 And it should give you a db console.
-    
+
+
+... Now all the chef and rackspace stuff
+
+Goal: All devs should know how to and be capable of (i.e. have tools / keys installed) spinning up a new environment.
+
+- Involves understanding chef and knife commands
     
