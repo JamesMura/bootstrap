@@ -15,10 +15,20 @@ Contains information and scripts to get a development machine up and running ver
 
 # Developer Machine installation (OS X Mountain Lion)
 
+First install git if you don't already have It, and setup a github account and gravatar image and get access to our team.
+
+Create somewhere to store all the stuff, e.g.
+
+    $ mkdir -p ~/Code/unicef/ureport
+
+First clone this repository so that you can update this doc or the developer-faq with anything you learn!
+
+    $ cd ~/Code/unicef/ureport    
+    $ git clone git@github.com:unicef-ureport/bootstrap.git
+
 
 Some prerequisites:
     
-    Git + Github account + Gravatar image
     Rackspace account
     Newrelic account
     Homebrew (https://github.com/mxcl/homebrew/wiki/Installation)
@@ -29,14 +39,6 @@ Some prerequisites:
     Rackspace client
     
 
-Create somewhere to store all the stuff, e.g.
-
-    $ mkdir -p ~/Code/unicef/ureport
-
-First clone this repository so that you can update this doc or the developer-faq with anything you learn!
-
-    $ cd ~/Code/unicef/ureport    
-    $ git clone git@github.com:unicef-ureport/bootstrap.git
     
 Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
 
