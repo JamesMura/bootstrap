@@ -16,6 +16,7 @@ Contains information and scripts to get a development machine up and running ver
 # Developer Machine installation (OS X Mountain Lion)
 
 First install git if you don't already have It, and setup a github account and gravatar image and get access to our team.
+if you are using git for the first time, follow these instructions to let you push to the ureport repo https://help.github.com/articles/generating-ssh-keys
 
 Create somewhere to store all the stuff, e.g.
 
