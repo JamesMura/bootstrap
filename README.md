@@ -61,7 +61,9 @@ Go back and clone the repos:
     
     <nimrod: ask us about submodules!!>
     
-    $ git clone 
+    $ git clone git@github.com:unicef-ureport/provisioning.git
+    
+    $ git clone git@github.com:unicef-ureport/performance.git
     
 Configure your python environment     
     
