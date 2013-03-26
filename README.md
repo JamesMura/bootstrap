@@ -34,8 +34,8 @@ Some prerequisites:
     Newrelic account
     Homebrew (https://github.com/mxcl/homebrew/wiki/Installation)
     Python (not 3, 2.7)
-    VirtualEnv (Like rvm for ruby, manages versions of Python)
     Postgresql 9.1 (http://postgresapp.com/)
+    XCode Developer Tools 4.6.1 (from your app store)
     Chef and chef client
     Rackspace client
 
@@ -102,8 +102,85 @@ You should also be able to do :
     
 And it should give you a db console.
 
+Install Chef Client
 
-... Now all the chef and rackspace stuff
+1. Run the Omnibus installer
+
+    $ curl -L http://www.opscode.com/chef/install.sh | sudo bash
+
+Ensure you enter your local machine's password after running the command above. After entering the password, chef should install.
+You should see something like the following
+
+    Downloading Chef for mac_os_x...
+      % Total    % Received  % Xferd   Average  Speed    Time     Time      Time   Current
+                                       Dload   Upload    Total    Spent     Left   Speed
+    100 23.9M  100 23.9M     0     0    944k       0   0:00:26  0:00:26  --:--:--   838k
+    Installing Chef
+
+Verify that chef has installed by running
+    
+    $ chef-client -v
+
+You should see something like this:
+    
+    Chef: 11.4.0
+
+Check that the following folder stucture is present on your local machine
+    
+    /opt
+       /chef
+          /bin
+          /embedded
+             /bin
+             /include
+             /lib
+             /share
+             /ssl
+
+2. Get the .pem files and knife.rb files
+
+    <argha What is the procedure a new dev should follow to obtain these files, and what are the login credentials of the Chef Server?>
+
+Run the following command to ??create??  the knife configuration file
+    
+    $ knife-configure -initial
+
+..... fill in the next steps
+
+3. Clone the chef repository. It is required if your machine is to interact with the Chef Server
+    
+    $ git clone git://github.com/opscode/chef-repo.git
+
+If the clone is successful, the following directory structure should be present in the directory into which you cloned the chef repo
+    
+    chef-repo/
+       certificates/
+       config/
+       cookbooks/
+       data_bags
+       environments/
+       roles/
+
+4. Create the .chef directory to stire the three files that were ??gotten?? from the Chef Server
+
+<i>knife.rb, validation.pem, and xxx.pem where xxx is your username <argha Please verify that this is correct/> </i>
+
+While still in the chef-repo folder, run the following command (sudo is not always required)
+    
+    $ sudo mkdir .chef
+
+Ensure that the following directory structure is present by running
+
+    $ ls -a
+
+You should see something like
+    
+    .       .chef       .gitignore  README.md   certificates    config      data_bags   roles
+    ..      .git        LICENSE     Rakefile    chefignore  cookbooks   environments
+
+<argha Should we do git ignore on .chef? />
+
+
 
 Goal: All devs should know how to and be capable of (i.e. have tools / keys installed) spinning up a new environment.
 
