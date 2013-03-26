@@ -44,7 +44,8 @@ Then your pip
     $ sudo easy_install pip
     $ pip install virtualenv
 
-    If $ pip install virtualenv fails with the message "Permission Denied", try
+If $ pip install virtualenv fails with the message "Permission Denied", try
+
     $sudo pip install virtualenv
 
 Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
