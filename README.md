@@ -38,19 +38,18 @@ Some prerequisites:
     Postgresql 9.1 (http://postgresapp.com/)
     Chef and chef client
     Rackspace client
-    
-
-    
-Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
-
-    $ mkdir -p ~/Code/unicef/ureport/virtualenv
-
 
 Then your pip
 
     $ sudo easy_install pip
     $ pip install virtualenv
 
+    If $ pip install virtualenv fails with the message "Permission Denied", try
+    $sudo pip install virtualenv
+
+Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
+
+    $ mkdir -p ~/Code/unicef/ureport/virtualenv
 
 Go in there and run virtualenv
 
@@ -67,10 +66,14 @@ Go back and clone the repos:
     $ git clone git@github.com:unicef-ureport/provisioning.git
     
     $ git clone git@github.com:unicef-ureport/performance.git
+
+Activate your virtualenv ureport can run on the python instance in the virtualenv
+
+    $ source ~/Code/unicef/ureport/virtualenv/ureport/bin/activate
     
 Configure your python environment     
     
-    $ cd ~/Code/unicef/ureport/original-repo/ureport-project
+    $ cd ~/Code/unicef/ureport/original-repo/
     $ pip install -r pip-requires.txt
     
 You can see if this works by 
