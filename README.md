@@ -67,7 +67,7 @@ Go back and clone the repos:
     
     $ git clone git@github.com:unicef-ureport/performance.git
 
-Activate your virtualenv ureport can run on the python instance in the virtualenv
+Activate your virtualenv so ureport can run on the python instance in the virtualenv
 
     $ source ~/Code/unicef/ureport/virtualenv/ureport/bin/activate
     
