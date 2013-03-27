@@ -104,7 +104,7 @@ And it should give you a db console.
 
 Install Chef Client
 
-1. Run the Omnibus installer
+# Run the Omnibus installer
 
     $ curl -L http://www.opscode.com/chef/install.sh | sudo bash
 
@@ -137,49 +137,75 @@ Check that the following folder stucture is present on your local machine
              /share
              /ssl
 
-2. Get the .pem files and knife.rb files
 
-    <argha What is the procedure a new dev should follow to obtain these files, and what are the login credentials of the Chef Server?>
-
-Run the following command to ??create??  the knife configuration file
+# Install knife-rackspace gem
     
-    $ knife-configure -initial
+    $ gem install knife-rackspace
 
-..... fill in the next steps
+<b>Copy required files to you Dev machine</b>
 
-3. Clone the chef repository. It is required if your machine is to interact with the Chef Server
+    # Copy validation.pem from
+        
+        /etc/chef
+
+    from the chef server at 95.138.169.81 into your chef directory which is at
+
+        ~/.chef/
+
+
+    # Obtain the encrypted_data_bag_secret file from <i>one of the developers</i> and copy it to
+
+        ~/.chef/
+
+
+# Go to the Chef Server at http://95.138.169.81:4040/clients and create a client using the "Create" tab
+
+# Enter a client name (your name) and click create. This will generate a private public Key pair that will be associated with the client you create.
+# Copy the Private Key into the .pem file under 
+        
+        ~/.chef/xxx.pem 
+
+    Where xxx is the name of the client you created
+
+#Add the following to your bash profile at ~/.bash_profile
+
+    # Rackspace credentials
+    export RACKSPACE_USERNAME="xxx"
+    export RACKSPACE_API_KEY="xxx"
+    export NEWRELIC_LICENSE_KEY="xxx"
+
+Substitute the xxx with your rackspace details
+
+Run the following command to generate the knife configuration file
     
-    $ git clone git://github.com/opscode/chef-repo.git
+    $ knife configure --initial
 
-If the clone is successful, the following directory structure should be present in the directory into which you cloned the chef repo
-    
-    chef-repo/
-       certificates/
-       config/
-       cookbooks/
-       data_bags
-       environments/
-       roles/
+    When prompted for chef server url, enter
 
-4. Create the .chef directory to stire the three files that were ??gotten?? from the Chef Server
+        'http://95.138.169.81:4000'
 
-<i>knife.rb, validation.pem, and xxx.pem where xxx is your username <argha Please verify that this is correct/> </i>
 
-While still in the chef-repo folder, run the following command (sudo is not always required)
-    
-    $ sudo mkdir .chef
+Edit knife.rb
 
-Ensure that the following directory structure is present by running
+knife.rb is found under ~/.chef/knife.rb
 
-    $ ls -a
+#  Open knife.rb and make the following changes :
 
-You should see something like
-    
-    .       .chef       .gitignore  README.md   certificates    config      data_bags   roles
-    ..      .git        LICENSE     Rakefile    chefignore  cookbooks   environments
+        validation_key           '~/.chef/validation.pem'
+        client_key               '/Users/Nimrod/.chef/nimrod01.pem'
 
-<argha Should we do git ignore on .chef? />
+     Copy the following 5 knife attributes into knife.rb 
 
+        knife[:rackspace_api_username] = "#{ENV['RACKSPACE_USERNAME']}"
+        knife[:rackspace_api_key] = "#{ENV['RACKSPACE_API_KEY']}"
+
+        knife[:rackspace_version] = 'v2'
+        knife[:rackspace_api_auth_url] = "lon.auth.api.rackspacecloud.com"
+        knife[:rackspace_endpoint] = "https://lon.servers.api.rackspacecloud.com/v2"
+
+     Add
+
+        encrypted_data_bag_secret '~/.chef/encrypted_data_bag_secret'
 
 
 Goal: All devs should know how to and be capable of (i.e. have tools / keys installed) spinning up a new environment.
