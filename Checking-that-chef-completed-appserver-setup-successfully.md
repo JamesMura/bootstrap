@@ -58,5 +58,5 @@ password set from rackspace if the password was changed.
 11. Check that celery is installed. Run
 	<code>pip freeze | grep celery</code>
 	You should see something like:
-	<code>celey==xxx</code> where xxx is the version of celery installed
+	<code>celery==xxx</code> where xxx is the version of celery installed
 
