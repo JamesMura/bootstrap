@@ -1,16 +1,20 @@
 SHH into the appserver with the IP address it was created with.
 	
-	<code>$ shh root@<appserver ip address></code>
+	<code>$ shh root@xx.xx.xx.xx</code>
+where xx.xx.xx.xx is the appserver IP address
 
-	Then enter the password that chef printed to the console after the appserver was created.
-	Note that this password could have been changed from the rackspace interface. Use the new
-	password set from rackspace if the password was changed.
+Then enter the password that chef printed to the console after the appserver was created.
+Note that this password could have been changed from the rackspace interface. Use the new
+password set from rackspace if the password was changed.
 
-1. Check that <b>localsettings.py</b> exists and that it has the right contents. Compare its contents with those of <fill in the file>
+1. Check that <b>localsettings.py</b> exists and that it has the right contents. 
+ 
+	Compare its contents with those of <b>fill in the file</b>
 
 2. Check that pip dependencies have been installed <b>in virtualenv</b>
 	
-	navigate to the virtualenv directory by running 
+	Navigate to the virtualenv directory by running
+
 	<code>$ cd /path to your ureport directory/provisioning/chef/cookbooks/virtualenv/</code>
 
 	Then check that all pip packages are installed by running
