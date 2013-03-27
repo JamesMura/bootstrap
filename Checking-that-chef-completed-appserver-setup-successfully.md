@@ -1,6 +1,6 @@
-SHH into the appserver with the IP address it was created with.
+SSH into the appserver with the IP address it was created with.
 	
-	<code>$ shh root@xx.xx.xx.xx</code>
+	<code>$ ssh root@xx.xx.xx.xx</code>
 where xx.xx.xx.xx is the appserver IP address
 
 Then enter the password that chef printed to the console after the appserver was created.
