@@ -13,3 +13,12 @@ A list of questions that people ask when they join the team!
 	In effect, you can have many applications on your machine, each on a separate version of python without running into conflicts.
 	For more information, see http://www.virtualenv.org/en/1.7.2/#what-it-does
 
+# How do you activate your virtual environment
+	
+	$ source /path to your ureport code/virtualenv/bin/activate
+
+You should then see <b>(ureport)</b> before your commandline prompt. 
+
+# What does cat <filename> | grep <search_text> do?
+	
+	Serches within the file for the search_text
