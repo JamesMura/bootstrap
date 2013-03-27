@@ -51,8 +51,8 @@ password set from rackspace if the password was changed.
 	<code>lsof -i:8080</code>
 	You should see an instance of tomcat running on port 8080
 
-10. Check that <b>geoserver_app</b> is running on the same port as specified in the <b>geoserver</b> recipe, in <b>default.rb</b>
-	In your browser, go to "<appserver ip address>:8080/geoserver". 
+10. Check that <b>geoserver</b> is running on the same port as specified in the <b>geoserver</b> recipe, in <b>default.rb</b>
+	In your browser, go to <code>xx.xx.xx.xx:8080/geoserver</code> where xx.xx.xx.xx is the IP address for the appserver. 
 	The geoserver page should load if geoserver is running
 
 11. Check that celery is installed. Run
