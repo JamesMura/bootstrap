@@ -12,18 +12,6 @@ Contains information and scripts to get a development machine up and running ver
     Rackspace
     Chef
     Newrelic
-    
-# If you have psql (PostgreSQL) 9.0.10 installed, you will need to upgrade to Postgresql 9.1. During this I ran into
-an this error:
-
-error: The following untracked working tree files would be overwritten by merge:
-    Library/Formula/libmusicbrainz.rb
-Please move or remove them before you can merge.
-Aborting
-Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
-
-In order to fix this, run command: 
-    rm /usr/local/Library/Formula/libmusicbrainz.rb 
 
 # Developer Machine installation (OS X Mountain Lion)
 
@@ -51,6 +39,24 @@ Some prerequisites:
     Chef and chef client
     Rackspace client
 
+<b>Postgres</b>
+
+If you have psql (PostgreSQL) 9.0.10 installed, you will need to upgrade to Postgresql 9.1. 
+
+    $brew upgrade psql
+    
+During this you might run into
+ this error:
+
+    error: The following untracked working tree files would be overwritten by merge:
+    Library/Formula/libmusicbrainz.rb
+    
+    Please move or remove them before you can merge.
+    Aborting
+    Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
+
+In order to fix this, run command: <code>rm /usr/local/Library/Formula/libmusicbrainz.rb</code>
+
 Then your pip
 
     $ sudo easy_install pip
@@ -72,7 +78,7 @@ Go in there and run virtualenv
 Go back and clone the repos:
 
     $ cd ..
-    $ git clone git@github.com:ureport.git original-repo
+    $ git clone git@github.com:unicefuganda/ureport.git original-repo
     
     <nimrod: ask us about submodules!!>
     
