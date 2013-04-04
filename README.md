@@ -26,13 +26,13 @@ Create somewhere to store all the stuff, e.g.
 First clone this repository so that you can update this doc or the developer-faq with anything you learn!
 
     $ cd ~/Code/unicef/ureport    
-    $ git clone git@github.com:unicef-ureport/bootstrap.git
+    $ git clone git@github.com:ureport/bootstrap.git
 
 
 Some prerequisites:
     
-    Rackspace account
-    Newrelic account
+    Rackspace account (we have this set up for you)
+    Newrelic account (we have this set up for you)
     Homebrew (https://github.com/mxcl/homebrew/wiki/Installation)
     Python (not 3, 2.7)
     Postgresql 9.1 (http://postgresapp.com/)
@@ -61,13 +61,13 @@ Go in there and run virtualenv
 Go back and clone the repos:
 
     $ cd ..
-    $ git clone git@github.com:unicefuganda/ureport.git original-repo
+    $ git clone git@github.com:ureport.git original-repo
     
     <nimrod: ask us about submodules!!>
     
-    $ git clone git@github.com:unicef-ureport/provisioning.git
+    $ git clone git@github.com:ureport/provisioning.git
     
-    $ git clone git@github.com:unicef-ureport/performance.git
+    $ git clone git@github.com:ureport/performance.git
 
 Activate your virtualenv so ureport can run on the python instance in the virtualenv
 
@@ -145,11 +145,11 @@ Check that the following folder stucture is present on your local machine
 
 <b>Copy required files to you Dev machine</b>
 
-    # Copy validation.pem from
+    # Copy validation.pem from the chef server at 95.138.169.81 (use the scp command)
         
         /etc/chef
 
-    from the chef server at 95.138.169.81 into your chef directory which is at
+    into your chef directory which is at
 
         ~/.chef/
 
@@ -159,10 +159,10 @@ Check that the following folder stucture is present on your local machine
         ~/.chef/
 
 
-# Go to the Chef Server at http://95.138.169.81:4040/clients and create a client using the "Create" tab
+# In your browser, Go to the Chef Server at http://95.138.169.81:4040/clients and create a client using the "Create" tab
 
 # Enter a client name (your name) and click create. This will generate a private public Key pair that will be associated with the client you create.
-# Copy the Private Key into the .pem file under 
+# Copy the Private Key into the .pem file under <b>DJ, is the file created before this?</b>
         
         ~/.chef/xxx.pem 
 
@@ -175,7 +175,7 @@ Check that the following folder stucture is present on your local machine
     export RACKSPACE_API_KEY="xxx"
     export NEWRELIC_LICENSE_KEY="xxx"
 
-Substitute the xxx with your rackspace details
+Substitute the xxx with the rackspace details you obtain from one of the developers
 
 Run the following command to generate the knife configuration file
     
