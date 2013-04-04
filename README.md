@@ -8,11 +8,22 @@ Contains information and scripts to get a development machine up and running ver
     Python (not 3, 2.7)
     VirtualEnv (Like rvm for ruby, manages versions of Python)
     Django 1.3
-    Postgresql 9.1
+    Postgresql 9.1 
     Rackspace
     Chef
     Newrelic
+    
+# If you have psql (PostgreSQL) 9.0.10 installed, you will need to upgrade to Postgresql 9.1. During this I ran into
+an this error:
 
+error: The following untracked working tree files would be overwritten by merge:
+    Library/Formula/libmusicbrainz.rb
+Please move or remove them before you can merge.
+Aborting
+Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
+
+In order to fix this, run command: 
+    rm /usr/local/Library/Formula/libmusicbrainz.rb 
 
 # Developer Machine installation (OS X Mountain Lion)
 
