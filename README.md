@@ -85,6 +85,10 @@ Go back and clone the repos:
     $ git clone git@github.com:ureport/provisioning.git
     
     $ git clone git@github.com:ureport/performance.git
+    
+    $ git submodule init
+    
+    $ git submodule update
 
 Activate your virtualenv so ureport can run on the python instance in the virtualenv
 
