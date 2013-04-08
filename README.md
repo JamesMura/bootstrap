@@ -39,6 +39,54 @@ Some prerequisites:
     Chef and chef client
     Rackspace client
 
+Then your pip
+
+    $ sudo easy_install pip
+    $ pip install virtualenv
+
+If $ pip install virtualenv fails with the message "Permission Denied", try
+
+    $sudo pip install virtualenv
+
+Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
+
+    $ mkdir -p ~/Code/unicef/ureport/virtualenv
+
+Go in there and run virtualenv
+
+    $ cd ~/Code/unicef/ureport/virtualenv
+    $ virtualenv --no-site-packages ureport
+    
+Go back and clone the repos:
+
+    $ cd ..
+    $ git clone git@github.com:unicefuganda/ureport.git original-repo
+    
+    <nimrod: ask us about submodules!!>
+    
+    $ git clone git@github.com:ureport/provisioning.git
+    
+    $ git clone git@github.com:ureport/performance.git
+    
+    $ git submodule init
+    
+    $ git submodule update
+
+Activate your virtualenv so ureport can run on the python instance in the virtualenv
+
+    $ source ~/Code/unicef/ureport/virtualenv/ureport/bin/activate
+    
+Configure your python environment     
+    
+    $ cd ~/Code/unicef/ureport/original-repo/
+    $ pip install -r pip-requires.txt
+    
+You can see if this works by 
+
+    $ pip freeze
+    
+It should show you all the libraries that are in pip-install.txt
+
 <b>Postgres</b>
 
 Download the <i>postgresapp</i> from http://postgresapp.com/
@@ -112,53 +160,6 @@ You should see something like this if it is successful
 Then run the migrations using the command <code>python manage.py migrate</code>.
 <b>You will run into some ugly foreseen migration errors here</b>
 
-Then your pip
-
-    $ sudo easy_install pip
-    $ pip install virtualenv
-
-If $ pip install virtualenv fails with the message "Permission Denied", try
-
-    $sudo pip install virtualenv
-
-Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
-
-    $ mkdir -p ~/Code/unicef/ureport/virtualenv
-
-Go in there and run virtualenv
-
-    $ cd ~/Code/unicef/ureport/virtualenv
-    $ virtualenv --no-site-packages ureport
-    
-Go back and clone the repos:
-
-    $ cd ..
-    $ git clone git@github.com:unicefuganda/ureport.git original-repo
-    
-    <nimrod: ask us about submodules!!>
-    
-    $ git clone git@github.com:ureport/provisioning.git
-    
-    $ git clone git@github.com:ureport/performance.git
-    
-    $ git submodule init
-    
-    $ git submodule update
-
-Activate your virtualenv so ureport can run on the python instance in the virtualenv
-
-    $ source ~/Code/unicef/ureport/virtualenv/ureport/bin/activate
-    
-Configure your python environment     
-    
-    $ cd ~/Code/unicef/ureport/original-repo/
-    $ pip install -r pip-requires.txt
-    
-You can see if this works by 
-
-    $ pip freeze
-    
-It should show you all the libraries that are in pip-install.txt
 
 Now make sure you have postgress installed and running...
 
