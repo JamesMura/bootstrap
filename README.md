@@ -43,6 +43,75 @@ Some prerequisites:
 
 Download the <i>postgresapp</i> from http://postgresapp.com/
 
+Start the app. A little elephant should appear in your task bar.
+
+Go to the elephant and make sure the first message in the drop down is <i>Running on Port 5432</i>
+
+If the message is <i>Failed to start on port 5432</i>, it is likely the case that your pre-installed
+postgres automatically starts on that port. Make sure the pre installed postgres is not running on
+that port and that it does not restart itself when you kill it.
+
+You will want to add the <i>Postgresapp<i> psql to your path. It is prefered that you do add it to your
+<code>~/.bashrc</code>. The full path to the <i>Postgresapp<i> psql is 
+<code>Users/Nimrod/Downloads/Postgres\ 2.app/Contents/MacOS/bin/psql</code>. Add it to the path so you don't 
+have to specify the full path whenever you want to run <code>psql</code>
+
+In your terminal, run <code>psql postgres</code>. This should take you into a postgresql prompt
+
+Create a <code>ureport</code> role with login permissions by running <code>CREATE ROLE ureport WITH LOGIN;</code>. 
+A success indicator is that psql prints <code>CREATE ROLE</code> after you run the command.
+
+Then create the ureport DB by running <code>CREATE DATABASE ureport;</code>. A success indicator is that
+psql prints <code>CREATE DATABASE</code> after you run the command.
+
+Connect to the <code>ureport</code> database by running <code>\connect ureport;</code> and make sure you get the
+message <code>You are now connected to database "postgres" as user "xxx".</code> where xxx is local your username
+
+Open a new terminal window, and navigate to the repo by running <code>/path/to/ureport/original-repo/ureport/</code>.
+
+While in that directory, activate your virtual environment by running 
+<code>source /path/to/ureport/virtualenv/ureport/bin/activate</code>. Your prompt should now change to start with 
+<code>(ureport)</code>
+
+With your virtual environment activated but while still in the repo, run <code>python migrate.py syncdb</code>.
+You should see something like this if it succeeds.
+    
+    Syncing...
+    Creating tables ...
+    Creating table django_site
+    Creating table auth_permission
+                    .
+                    .
+    Creating table south_migrationhistory
+
+    You just installed Django's auth system, which means you don't have any superusers defined.
+    Would you like to create one now? (yes/no):
+    
+Create the superuser with default username and a password of your choice <b>Argha, is this right?</b>.
+You should see something like this if it is successful
+
+    Superuser created successfully.
+    Installing custom SQL ...
+    Installing indexes ...
+    No fixtures found.
+    
+    Synced:
+     > mptt
+     > uni_form
+         .
+         .
+     > south
+    
+    Not synced (use migrations):
+     - ureport
+     - django_extensions
+            .
+            .
+     -(use ./manage.py migrate to migrate these)
+     
+Then run the migrations using the command <code>python manage.py migrate</code>.
+<b>You will run into some ugly foreseen migration errors here</b>
+
 Then your pip
 
     $ sudo easy_install pip
