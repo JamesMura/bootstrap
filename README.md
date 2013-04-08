@@ -41,21 +41,7 @@ Some prerequisites:
 
 <b>Postgres</b>
 
-If you have psql (PostgreSQL) 9.0.10 installed, you will need to upgrade to Postgresql 9.1. 
-
-    $brew upgrade psql
-    
-During this you might run into
- this error:
-
-    error: The following untracked working tree files would be overwritten by merge:
-    Library/Formula/libmusicbrainz.rb
-    
-    Please move or remove them before you can merge.
-    Aborting
-    Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
-
-In order to fix this, run command: <code>rm /usr/local/Library/Formula/libmusicbrainz.rb</code>
+Download the <i>postgresapp</i> from http://postgresapp.com/
 
 Then your pip
 
