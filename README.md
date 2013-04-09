@@ -99,15 +99,16 @@ If the message is <i>Failed to start on port 5432</i>, it is likely the case tha
 postgres automatically starts on that port. Make sure the pre installed postgres is not running on
 that port and that it does not restart itself when you kill it.
 
-You will want to add the <i>Postgresapp<i> psql to your path. It is prefered that you do add it to your
+Check if there is a pre-existing installation of psql in <code>/usr/bin/</code> by running
+<code>which psql</code>. If it exists, rename it using <code>mv /usr/bin/psql /usr/bin/pqsl-old</code> so it does not 
+conflict with Postgresapp's psql. Check that it has been removed by running <code>which pqsl</code>.
+Check that there is no psql location reported
+
+Then, add the <i>Postgresapp<i> psql to your path. It is prefered that you do add it to your
 <code>~/.bashrc</code>. The full path to the <i>Postgresapp<i> psql is 
-<code>Users/Nimrod/Downloads/Postgres\ 2.app/Contents/MacOS/bin/psql</code>. Add it to the path so you don't 
-have to specify the full path whenever you want to run <code>psql</code>
+<code>Users/Nimrod/Downloads/Postgres\ 2.app/Contents/MacOS/bin/psql</code>. 
 
-In your terminal, run <code>psql postgres</code>. This should take you into a postgresql prompt
-
-Create a <code>ureport</code> role with login permissions by running <code>CREATE ROLE ureport WITH LOGIN;</code>. 
-A success indicator is that psql prints <code>CREATE ROLE</code> after you run the command.
+In your terminal, run `psql postgres`. This should take you into a postgresql prompt
 
 Then create the ureport DB by running <code>CREATE DATABASE ureport;</code>. A success indicator is that
 psql prints <code>CREATE DATABASE</code> after you run the command.
@@ -121,7 +122,7 @@ While in that directory, activate your virtual environment by running
 <code>source /path/to/ureport/virtualenv/ureport/bin/activate</code>. Your prompt should now change to start with 
 <code>(ureport)</code>
 
-With your virtual environment activated but while still in the repo, run <code>python migrate.py syncdb</code>.
+With your virtual environment activated but while still in the repo, run <code>./manage.py syncdb --noinput</code>.
 You should see something like this if it succeeds.
     
     Syncing...
@@ -131,17 +132,6 @@ You should see something like this if it succeeds.
                     .
                     .
     Creating table south_migrationhistory
-
-    You just installed Django's auth system, which means you don't have any superusers defined.
-    Would you like to create one now? (yes/no):
-    
-Create the superuser with default username and a password of your choice <b>Argha, is this right?</b>.
-You should see something like this if it is successful
-
-    Superuser created successfully.
-    Installing custom SQL ...
-    Installing indexes ...
-    No fixtures found.
     
     Synced:
      > mptt
@@ -157,9 +147,7 @@ You should see something like this if it is successful
             .
      -(use ./manage.py migrate to migrate these)
      
-Then run the migrations using the command <code>python manage.py migrate</code>.
-<b>You will run into some ugly foreseen migration errors here</b>
-
+Then run the migrations using the command <code>./manage.py migrate</code>.
 
 Now make sure you have postgress installed and running...
 
@@ -176,7 +164,7 @@ Now make sure you have postgress installed and running...
     
 You should also be able to do :
 
-    $ psql
+    $ psql postgres
     
 And it should give you a db console.
 
