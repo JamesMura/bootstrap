@@ -108,7 +108,11 @@ Then, add the <i>Postgresapp<i> psql to your path. It is prefered that you do ad
 <code>~/.bashrc</code>. The full path to the <i>Postgresapp<i> psql is 
 <code>Users/Nimrod/Downloads/Postgres\ 2.app/Contents/MacOS/bin/psql</code>. 
 
-In your terminal, run `psql postgres`. This should take you into a postgresql prompt
+Login into psql as yourself by running `psql`
+
+Create the role `postgres` with `CREATE ROLE postgres WITH LOGIN CREATEDB;`
+
+In your terminal, run `psql -U postgres`. This should take you into a postgresql prompt
 
 Then create the ureport DB by running <code>CREATE DATABASE ureport;</code>. A success indicator is that
 psql prints <code>CREATE DATABASE</code> after you run the command.
