@@ -22,3 +22,26 @@ You should then see <b>(ureport)</b> before your commandline prompt.
 # What does cat <filename> | grep <search_text> do?
 	
 	Serches within the file for the search_text
+    
+# Setting up to run the server locally
+
+    brew install nginx Note you should make sure brew is up to date (brew doctor)
+    
+    brew install uwsgi
+    
+    brew install uwsgi-plugin-python
+        
+You will need the nginx conf and the ureport nginx conf. The files you need are in this dir. 
+
+    vim /usr/local/etc/nginx/nginx.conf
+
+You need to link ureport into where nginx can see it...
+
+    ln -s ${UREPORT_HOME} /usr/local/var/www/ureport
+    
+To reload configuration just type
+
+    nginx -s reload
+    
+
+    
