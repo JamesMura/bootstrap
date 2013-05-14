@@ -282,3 +282,9 @@ Goal: All devs should know how to and be capable of (i.e. have tools / keys inst
 
 - Involves understanding chef and knife commands
     
+# Local nginx
+
+To have launchd start nginx at login:
+    ln -sfv /usr/local/opt/nginx/*.plist ~/Library/LaunchAgents
+Then to load nginx now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist
