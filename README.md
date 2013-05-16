@@ -310,7 +310,7 @@ Make a convenient shortcut for stopping and starting its
 
 This is the program that will import shape files to postgres. It lives wherever your Postgres.app file is
 
-    ln -s /usr/local/bin/ogr2ogr /Applications/Postgres.app/Contents/MacOS/bin/ogr2ogr
+    ln -s /Applications/Postgres.app/Contents/MacOS/bin/ogr2ogr /usr/local/bin/ogr2ogr
     
 You will need a few libraries...
 
