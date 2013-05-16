@@ -362,4 +362,10 @@ Now we need to add some machine specific config
     
     wget -O datastore.xml https://raw.github.com/ureport/provisioning/master/chef/cookbooks/geoserver_app/templates/templates/default/datastore.xml.erb
     
+We need to replace some variables
+
+    sed "s/<\%= @db_port \%>/put_db_port_here/" datastore.xml >> datastore.xml
+    sed "s/<\%= @user \%>/put_db_host/" datastore.xml >> datastore.xml
+    sed "s/<\%= @user \%>/put_db_user_name_here/" datastore.xml >> datastore.xml
+    
 In there there are some parameters which you need to Substitute
