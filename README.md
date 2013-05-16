@@ -293,6 +293,19 @@ Then to load nginx now:
 
 ## Get tomcat installed
 
+    brew install tomcat
+    
+Edit the file `/usr/local/Cellar/tomcat/<version/libexec/conf/tomcat-users.xml` and add the following user:
+
+    <role rolename="manager-gui"/>
+    <user username="<choose a username>" password="<choose a password>" roles="manager-gui" />
+
+Make a convenient shortcut for stopping and starting its
+    
+    ln -s /usr/local/Cellar/tomcat/7.0.39/bin/catalina /usr/local/bin/tomcat7
+    
+    ln -s /usr/local/Cellar/tomcat/7.0.39/libexec/ /usr/local/etc/tomcat7
+
 ## Link ogr2gr
 
 This is the program that will import shape files to postgres. It lives wherever your Postgres.app file is
@@ -302,5 +315,13 @@ This is the program that will import shape files to postgres. It lives wherever 
 You will need a few libraries...
 
     brew install libtiff
+    
+    
+## Download geoserver
+
+    cd /usr/local/etc/tomcat7
+    
+    wget -O geoserver-2.2.5.zip http://downloads.sourceforge.net/project/geoserver/GeoServer/2.2.5/geoserver-2.2.5-war.zip?r=http%3A%2F%2Fgeoserver.org%2Fdisplay%2FGEOS%2FGeoServer%2B2.2.5
+ 
     
 
