@@ -365,7 +365,7 @@ Now we need to add some machine specific config
 We need to replace some variables
 
     sed "s/<\%= @db_port \%>/put_db_port_here/" datastore.xml >> datastore.xml
-    sed "s/<\%= @user \%>/put_db_host/" datastore.xml >> datastore.xml
+    sed "s/<\%= @db_host \%>/put_db_host/" datastore.xml >> datastore.xml
     sed "s/<\%= @user \%>/put_db_user_name_here/" datastore.xml >> datastore.xml
     
 In there there are some parameters which you need to Substitute
