@@ -319,9 +319,9 @@ You will need a few libraries...
     
 ## Download geoserver
 
-    mkdir -p ~/tmp/geoserver
+    mkdir -p ~/tmp/geoserver/war
     
-    cd ~/tmp/geoserver
+    cd ~/tmp/geoserver/war
     
     wget -O geoserver-2.2.5.zip http://downloads.sourceforge.net/project/geoserver/GeoServer/2.2.5/geoserver-2.2.5-war.zip?r=http%3A%2F%2Fgeoserver.org%2Fdisplay%2FGEOS%2FGeoServer%2B2.2.5
  
@@ -340,3 +340,20 @@ You can see if its worked by looking in
     tail -f /usr/local/etc/tomcat7/logs/catalina.out
     
 If it doesnt work, try tailing that log and restarting tomcat.
+
+## Install the geoserver data directory
+
+First get the zip files
+    
+    mkdir -p ~/tmp/geoserver/data
+    cd ~/tmp/geoserver/data
+    
+    wget -O geoserver-data.tgz https://github.com/ureport/provisioning/blob/master/chef/cookbooks/geoserver_app/files/default/geoserver-data.tgz?raw=true
+    
+    mkdir -p /usr/local/var/lib
+    
+    cd /usr/local/var/lib
+    
+    tar xfvz ~/tmp/geoserver/data/geoserver-data.tgz 
+    
+    
