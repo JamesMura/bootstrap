@@ -319,9 +319,24 @@ You will need a few libraries...
     
 ## Download geoserver
 
-    cd /usr/local/etc/tomcat7
+    mkdir -p ~/tmp/geoserver
+    
+    cd ~/tmp/geoserver
     
     wget -O geoserver-2.2.5.zip http://downloads.sourceforge.net/project/geoserver/GeoServer/2.2.5/geoserver-2.2.5-war.zip?r=http%3A%2F%2Fgeoserver.org%2Fdisplay%2FGEOS%2FGeoServer%2B2.2.5
  
-    
+    unzip geoserver-2.2.5.zip
 
+    tomcat7 stop
+    
+    cp geoserver.war /usr/local/etc/tomcat7/webapps
+    
+    tomcat7 start
+
+    open http://localhost:8080/geoserver
+
+You can see if its worked by looking in 
+
+    tail -f /usr/local/etc/tomcat7/logs/catalina.out
+    
+If it doesnt work, try tailing that log and restarting tomcat.
