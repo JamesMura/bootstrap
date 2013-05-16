@@ -356,4 +356,10 @@ First get the zip files
     
     tar xfvz ~/tmp/geoserver/data/geoserver-data.tgz 
     
+Now we need to add some machine specific config
+
+    cd workspaces/unicef/geoserver
     
+    wget -O datastore.xml https://raw.github.com/ureport/provisioning/master/chef/cookbooks/geoserver_app/templates/templates/default/datastore.xml.erb
+    
+In there there are some parameters which you need to Substitute
