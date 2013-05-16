@@ -288,3 +288,19 @@ To have launchd start nginx at login:
     ln -sfv /usr/local/opt/nginx/*.plist ~/Library/LaunchAgents
 Then to load nginx now:
     launchctl load ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist
+
+# Installing geoserver locally
+
+## Get tomcat installed
+
+## Link ogr2gr
+
+This is the program that will import shape files to postgres. It lives wherever your Postgres.app file is
+
+    ln -s /usr/local/bin/ogr2ogr /Applications/Postgres.app/Contents/MacOS/bin/ogr2ogr
+    
+You will need a few libraries...
+
+    brew install libtiff
+    
+
