@@ -350,15 +350,17 @@ First get the zip files
     
     wget -O geoserver-data.tgz https://github.com/ureport/provisioning/blob/master/chef/cookbooks/geoserver_app/files/default/geoserver-data.tgz?raw=true
     
-    mkdir -p /usr/local/var/lib
+    mkdir -p /usr/local/var/lib/geoserver_data
     
-    cd /usr/local/var/lib
+    cd /usr/local/var/lib/geoserver_data
     
     tar xfvz ~/tmp/geoserver/data/geoserver-data.tgz 
     
 Now we need to add some machine specific config
 
-    cd workspaces/unicef/geoserver
+    sudo ln -s /usr/local/var/lib/geoserver_data /var/lib/geoserver_data
+
+    cd /var/lib/geoserver_data/workspaces/unicef/geoserver
     
     wget -O datastore.xml https://raw.github.com/ureport/provisioning/master/chef/cookbooks/geoserver_app/templates/templates/default/datastore.xml.erb
     
@@ -372,4 +374,38 @@ We need to replace some variables
     
     sed "s/<\%= @user \%>/put_db_user_name_here/" datastore.xml >> datastore.xml.merged
     mv datastore.xml.merged datastore.xml
-In there there are some parameters which you need to Substitute
+    
+We now need to create our geoserver data base
+
+    mkdir -p ~/tmp/geoserver/db
+    
+    cd ~/tmp/geoserver/db
+    
+    wget -O geoserver-db.tgz https://github.com/ureport/provisioning/raw/master/chef/cookbooks/geoserver_db/files/default/geoserver-db.tgz
+    
+    tar xfvz geoserver-db.tgz 
+    
+You now have a script in this folder which should setup a geoserver database from scratch. Be warned, it will overwrite the DB if it exists!
+
+    ./configure-geoserver-db.sh 
+    
+This script will create a databse as your local user on localhost with the default postgres port. You can pass in these parameters.
+    
+Now we need to tell geoserver to pick up this data dir...
+    
+    cd ~/tmp/geoserver
+    
+    wget -O web.xml https://raw.github.com/ureport/provisioning/master/chef/cookbooks/geoserver_app/templates/templates/default/web.xml.erb
+    
+    tomcat7 stop
+    
+    cp web.xml /usr/local/etc/tomcat7/webapps/geoserver/WEB-INF
+        
+    tomcat7 start
+    
+    tail -f /usr/local/etc/tomcat7/logs/catalina.out 
+
+And now you should see everthing start up!
+
+If you go into http://localhost:8080/geoserver you should see that there is a unicef workspace and that some layers are there. Also there should be no errors in the log file.
+
