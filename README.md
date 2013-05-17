@@ -409,3 +409,23 @@ And now you should see everthing start up!
 
 If you go into http://localhost:8080/geoserver you should see that there is a unicef workspace and that some layers are there. Also there should be no errors in the log file.
 
+If you have existing data for polls, you will need to export the poll data...
+
+To get this to work, unfortunately we have to patch django!
+
+    patch -p2 -d ${UREPORT_VIRTUAL_ENV_HOME}/lib/python2.7/site-packages/django < ${UREPORT_HOME}/ureport_project/rapidsms_ureport/12890.Django-1.3.diff
+   
+It will complain about some files which are actually test files. When it does this, keep pressing <ENTER> and it will ask if you want to skip this patch, just say 'y'.
+
+Now we can do this:
+
+    cd ${UREPORT_HOME}/ureport_project
+
+Ensure your virtualenv is activated
+
+    ./manage.py export_poll_data --settings=xxx_settings
+    
+Where `xxx_settings` is which ever settings file you want to use.
+   
+   
+    
