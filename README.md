@@ -417,6 +417,7 @@ To get this to work, unfortunately we have to patch django!
    
 It will complain about some files which are actually test files. When it does this, keep pressing <ENTER> and it will ask if you want to skip this patch, just say 'y'.
 
+
 Now we can do this:
 
     cd ${UREPORT_HOME}/ureport_project
@@ -426,6 +427,12 @@ Ensure your virtualenv is activated
     ./manage.py export_poll_data --settings=xxx_settings
     
 Where `xxx_settings` is which ever settings file you want to use.
-   
+
+If you don't have the patch applied, you will see this
+
+    django.db.utils.DatabaseError: missing FROM-clause entry for table "t7"
+    LINE 1: SELECT (T7.name) AS "location_name", (locations_point.longit...
+                ^
+
    
     
