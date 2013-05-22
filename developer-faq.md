@@ -43,11 +43,17 @@ To reload configuration just type
 
     nginx -s reload
     
-# Geoserver Layer setup error
-    NullPointer Exception: Have you requested for a property that doesn't exist?
-    
-    Look into <code>/var/lib/geoserver_data/workspaces/unicef/geoserver/{<LAYER_NAME_FILE>}</code>
-    and ensure that the <name> and <native_name> tags both contain the same string.
+# Geoserver Layer setup debugging
+
+NullPointer Exception: Have you requested for a property that doesn't exist?
+Look into
+    <code>/var/lib/geoserver_data/workspaces/unicef/geoserver/{<LAYER_NAME_FILE>}</code>
+and ensure that the <name> and <native_name> tags both contain the same string.
+
+Error occurred getting features Schema 'http://unicef.org/ureport:xxxx' does not exist when 
+setting up a layer for categorical polls. Look in the same place as shown above for the features.xml
+file for the layer and ensure that under the <virtualTable> entry has the same name as the name of
+the layer you have created
     
 
     
