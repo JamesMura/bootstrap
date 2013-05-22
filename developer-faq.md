@@ -43,7 +43,7 @@ To reload configuration just type
 
     nginx -s reload
     
-# Geoser Layer setup error
+# Geoserver Layer setup error
     NullPointer Exception: Have you requested for a property that doesn't exist?
     
     Look into <code>/var/lib/geoserver_data/workspaces/unicef/geoserver/{<LAYER_NAME_FILE>}</code>
