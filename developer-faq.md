@@ -54,6 +54,10 @@ Error occurred getting features Schema 'http://unicef.org/ureport:xxxx' does not
 setting up a layer for categorical polls. Look in the same place as shown above for the features.xml
 file for the layer and ensure that under the <virtualTable> entry has the same name as the name of
 the layer you have created
+
+Geoserver does not show data in geoserver db. It could be that it cannot connect to the DB. Check the
+geoserver.log to find out if it is complaining about failure to connect to the DB. If it is the case,
+ensure that the 'datastore.xml' is configured correctly.
     
 
     
