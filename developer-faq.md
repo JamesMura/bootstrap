@@ -58,6 +58,10 @@ the layer you have created
 Geoserver does not show data in geoserver db. It could be that it cannot connect to the DB. Check the
 geoserver.log to find out if it is complaining about failure to connect to the DB. If it is the case,
 ensure that the 'datastore.xml' is configured correctly.
+
+# Where are the logs??
+tomcat: /usr/local/Cellar/tomcat/7.0.39/libexec/logs/catalina.out
+
     
 
     
