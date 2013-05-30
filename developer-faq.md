@@ -60,7 +60,9 @@ geoserver.log to find out if it is complaining about failure to connect to the D
 ensure that the 'datastore.xml' is configured correctly.
 
 # Where are the logs??
+
 tomcat: /usr/local/Cellar/tomcat/7.0.39/libexec/logs/catalina.out
+
 geoserver: /var/lib/geoserver_data/logs/geoserver.log
 
 
