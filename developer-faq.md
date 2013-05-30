@@ -61,7 +61,23 @@ ensure that the 'datastore.xml' is configured correctly.
 
 # Where are the logs??
 tomcat: /usr/local/Cellar/tomcat/7.0.39/libexec/logs/catalina.out
+geoserver: /var/lib/geoserver_data/logs/geoserver.log
 
-    
+
+# Exporting Shape Files into geoserver db.
+
+Get the .zip file of the shape files data and extract it to the directory you want to work from. Any directory
+will do.
+
+If you have a geoerver db setup already and you only need to update the shape files in it,
+
+cd into the directory into which you extracted the .zip containing the shape files and run a command similar to 
+<code>ogr2ogr -f "PostgreSQL" -t_srs EPSG:900913 PG:"host=localhost user=postgres dbname=geoserver" Adm3_Counties_coarse.shp -nlt multipolygon -nln southsudan_districts2013 </code>
+
+Ensure to replace the arguments in the command with the appropriate db credentials, shape file (.shp) and
+the correct name you want your db table that will contain the shape files to be called.
+
+If you have no geoserver db set up at all, Look at the script in ureport_project/rapidsms_geoserver/setup.sh
+to see the things you have to do to set it up from your shape files
 
     
