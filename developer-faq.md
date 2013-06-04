@@ -2,14 +2,17 @@
 
 A list of questions that people ask when they join the team!
 
+
 ### What are submodules and how do they work?
 
 <nimrod: you can fill this in when you understand them:)>
+
 
 #### What does $ virtualenv --no-site-packages do?
 	Will ensure that the python you install for ureport doesn't affect your global python installation. 
 	In effect, you can have many applications on your machine, each on a separate version of python without running into conflicts.
 	For more information, see http://www.virtualenv.org/en/1.7.2/#what-it-does
+
 
 #### How do you activate your virtual environment
 	
@@ -17,10 +20,12 @@ A list of questions that people ask when they join the team!
 
 You should then see <b>(ureport)</b> before your commandline prompt. 
 
+
 #### What does cat <filename> | grep <search_text> do?
 	
 	Serches within the file for the search_text
-    
+
+
 #### Setting up to run the server locally
 
     brew install nginx Note you should make sure brew is up to date (brew doctor)
@@ -41,6 +46,7 @@ To reload configuration just type
 
     nginx -s reload
     
+
 #### Geoserver Layer setup debugging
 
 NullPointer Exception: Have you requested for a property that doesn't exist?
@@ -57,11 +63,13 @@ Geoserver does not show data in geoserver db. It could be that it cannot connect
 geoserver.log to find out if it is complaining about failure to connect to the DB. If it is the case,
 ensure that the 'datastore.xml' is configured correctly.
 
+
 #### Where are the logs??
 
 tomcat: /usr/local/Cellar/tomcat/7.0.39/libexec/logs/catalina.out
 
 geoserver: /var/lib/geoserver_data/logs/geoserver.log
+
 
 
 #### Exporting Shape Files into geoserver db.
@@ -79,6 +87,7 @@ the correct name you want your db table that will contain the shape files to be 
 
 If you have no geoserver db set up at all, Look at the script in ureport_project/rapidsms_geoserver/setup.sh
 to see the things you have to do to set it up from your shape files
+
 
 #### Run a specific recipe/cookbook on a chef node
 
