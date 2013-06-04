@@ -88,7 +88,7 @@ the correct name you want your db table that will contain the shape files to be 
 If you have no geoserver db set up at all, Look at the script in ureport_project/rapidsms_geoserver/setup.sh
 to see the things you have to do to set it up from your shape files
 
-
+<br>
 #### Run a specific recipe/cookbook on a chef node
 
 chef-client -o 'role[networking]' --once
