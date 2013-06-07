@@ -92,3 +92,8 @@ to see the things you have to do to set it up from your shape files
 #### <u>Run a specific recipe/cookbook on a chef node</u>
 
 chef-client -o 'role[networking]' --once
+
+<br>
+#### Decypting / Encrypting chef data bags
+
+http://docs.opscode.com/essentials_data_bags_encrypt.html
