@@ -97,3 +97,8 @@ chef-client -o 'role[networking]' --once
 #### Decypting / Encrypting chef data bags
 
 http://docs.opscode.com/essentials_data_bags_encrypt.html
+
+<br>
+#### git keeps asking for a passphrase for any pull or push
+
+http://stackoverflow.com/questions/10032461/git-keeps-to-ask-me-for-ssh-key-passphrase
