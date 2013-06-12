@@ -102,3 +102,8 @@ http://docs.opscode.com/essentials_data_bags_encrypt.html
 #### git keeps asking for a passphrase for any pull or push
 
 http://stackoverflow.com/questions/10032461/git-keeps-to-ask-me-for-ssh-key-passphrase
+
+<br>
+#### Load locations into ureport db
+
+<code>./manage.py laoddata locations --settings=YOUR_SETTINGS_FILE</code>
