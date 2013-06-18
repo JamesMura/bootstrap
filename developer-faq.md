@@ -107,3 +107,11 @@ http://stackoverflow.com/questions/10032461/git-keeps-to-ask-me-for-ssh-key-pass
 #### Load locations into ureport db
 
 <code>./manage.py laoddata locations --settings=YOUR_SETTINGS_FILE</code>
+
+<br>
+#### How to simulate responses to polls
+
+Ensure you have a contact with the backend, identity and group properties set up. 
+<code>http://localhost:8088/router/receive?message=No&backend=console&sender=10</code>
+'Sender' corresponds to the contact's identity.
+
