@@ -30,14 +30,11 @@ First clone this repository so that you can update this doc or the developer-faq
 
 Some prerequisites:
     
-    Rackspace account (we have this set up for you)
-    Newrelic account (we have this set up for you)
+    Rackspace account (we have to this set up for you)
+    Newrelic account
     Homebrew (https://github.com/mxcl/homebrew/wiki/Installation)
     Python (not 3, 2.7)
-    Postgresql 9.1 (http://postgresapp.com/)
     XCode Developer Tools 4.6.1 (from your app store)
-    Chef and chef client
-    Rackspace client
 
 Then your pip
 
@@ -46,21 +43,21 @@ Then your pip
 
 If $ pip install virtualenv fails with the message "Permission Denied", try
 
-    $sudo pip install virtualenv
+    $ sudo pip install virtualenv
 
 Go to some folder where you want to store the code and create a folder called “virtualenv”, e.g.
 
-    $ mkdir -p ~/Code/unicef/ureport/virtualenv
+    $ mkdir -p virtualenv
 
 Go in there and run virtualenv
 
-    $ cd ~/Code/unicef/ureport/virtualenv
+    $ cd virtualenv
     $ virtualenv --no-site-packages ureport
     
 Go back and clone the repos:
 
     $ cd ..
-    $ git clone git@github.com:unicefuganda/ureport.git original-repo
+    $ git clone git@github.com:unicefuganda/ureport.git 
     
     <nimrod: ask us about submodules!!>
     
@@ -68,17 +65,20 @@ Go back and clone the repos:
     
     $ git clone git@github.com:ureport/performance.git
     
+For each repository:
+
     $ git submodule init
     
     $ git submodule update
 
-Activate your virtualenv so ureport can run on the python instance in the virtualenv
+Activate your virtualenv so ureport can run on the python instance in the virtualenv:
 
-    $ source ~/Code/unicef/ureport/virtualenv/ureport/bin/activate
+    $ source ./virtualenv/ureport/bin/activate
     
 Configure your python environment     
     
-    $ cd ~/Code/unicef/ureport/original-repo/
+    $ cd ureport
+
     $ pip install -r pip-requires.txt
     
 You can see if this works by 
@@ -174,18 +174,9 @@ And it should give you a db console.
 
 Install Chef Client
 
-# Run the Omnibus installer
+# Install chef 
 
-    $ curl -L http://www.opscode.com/chef/install.sh | sudo bash
-
-Ensure you enter your local machine's password after running the command above. After entering the password, chef should install.
-You should see something like the following
-
-    Downloading Chef for mac_os_x...
-      % Total    % Received  % Xferd   Average  Speed    Time     Time      Time   Current
-                                       Dload   Upload    Total    Spent     Left   Speed
-    100 23.9M  100 23.9M     0     0    944k       0   0:00:26  0:00:26  --:--:--   838k
-    Installing Chef
+    $ gem install chef
 
 Verify that chef has installed by running
     
@@ -193,7 +184,7 @@ Verify that chef has installed by running
 
 You should see something like this:
     
-    Chef: 11.4.0
+    Chef: 11.4.4
 
 Check that the following folder stucture is present on your local machine
     
@@ -208,79 +199,53 @@ Check that the following folder stucture is present on your local machine
              /ssl
 
 
-# Install knife-rackspace gem
+# Set up knife-rackspace 
     
     $ gem install knife-rackspace
 
-<b>Copy required files to you Dev machine</b>
+In your browser, Go to the Chef Server at http://95.138.169.81:4040/clients and create a client using the "Create" tab.
 
-    # Copy validation.pem from the chef server at 95.138.169.81 (use the scp command)
+Enter a client name (your name), tick the box marking your client as an admin and click create. This will generate a private/public key pair that will be associated with the client you create. Save it as:
         
-        /etc/chef
+    ~/.chef/<client_name>.pem 
 
-    into your chef directory which is at
-
-        ~/.chef/
-
-
-    # Obtain the encrypted_data_bag_secret file from <i>one of the developers</i> and copy it to
-
-        ~/.chef/
-
-
-# In your browser, Go to the Chef Server at http://95.138.169.81:4040/clients and create a client using the "Create" tab
-
-# Enter a client name (your name) and click create. This will generate a private public Key pair that will be associated with the client you create.
-# Copy the Private Key into the .pem file under <b>DJ, is the file created before this?</b>
-        
-        ~/.chef/xxx.pem 
-
-    Where xxx is the name of the client you created
-
-#Add the following to your bash profile at ~/.bash_profile
+Add the following to `~/.bash_profile` (or appropriate other file if you're using e.g. zsh).
 
     # Rackspace credentials
     export RACKSPACE_USERNAME="xxx"
     export RACKSPACE_API_KEY="xxx"
     export NEWRELIC_LICENSE_KEY="xxx"
 
-Substitute the xxx with the rackspace details you obtain from one of the developers
-
+Substitute the xxx with the rackspace details you obtain from one of the developers.
 Run the following command to generate the knife configuration file
     
     $ knife configure --initial
 
-    When prompted for chef server url, enter
+When prompted for chef server url, enter
 
-        'http://95.138.169.81:4000'
+    'http://95.138.169.81:4000'
 
+Edit `~/.chef/knife.rb` and make the following changes:
 
-Edit knife.rb
+    client_key               '~/.chef/<client_name>.pem'
 
-knife.rb is found under ~/.chef/knife.rb
+Copy the following 5 knife attributes into `~/.chef/knife.rb`:
 
-#  Open knife.rb and make the following changes :
+    knife[:rackspace_api_username] = "#{ENV['RACKSPACE_USERNAME']}"
+    knife[:rackspace_api_key] = "#{ENV['RACKSPACE_API_KEY']}"
+    knife[:rackspace_version] = 'v2'
+    knife[:rackspace_api_auth_url] = "lon.auth.api.rackspacecloud.com"
+    knife[:rackspace_endpoint] = "https://lon.servers.api.rackspacecloud.com/v2"
 
-        validation_key           '~/.chef/validation.pem'
-        client_key               '/Users/Nimrod/.chef/nimrod01.pem'
+Add:
 
-     Copy the following 5 knife attributes into knife.rb 
+    encrypted_data_bag_secret '~/.chef/encrypted_data_bag_secret'
 
-        knife[:rackspace_api_username] = "#{ENV['RACKSPACE_USERNAME']}"
-        knife[:rackspace_api_key] = "#{ENV['RACKSPACE_API_KEY']}"
+To verify:
 
-        knife[:rackspace_version] = 'v2'
-        knife[:rackspace_api_auth_url] = "lon.auth.api.rackspacecloud.com"
-        knife[:rackspace_endpoint] = "https://lon.servers.api.rackspacecloud.com/v2"
+    $ knife node list
 
-     Add
-
-        encrypted_data_bag_secret '~/.chef/encrypted_data_bag_secret'
-
-
-Goal: All devs should know how to and be capable of (i.e. have tools / keys installed) spinning up a new environment.
-
-- Involves understanding chef and knife commands
+All devs should know how to and be capable of (i.e. have tools / keys installed) spinning up a new environment.
     
 # Local nginx
 
