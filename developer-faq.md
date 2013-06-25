@@ -66,9 +66,12 @@ ensure that the 'datastore.xml' is configured correctly.
 
 #### Where are the logs??
 
-tomcat: /usr/local/Cellar/tomcat/7.0.39/libexec/logs/catalina.out
+<b>tomcat:</b> /usr/local/Cellar/tomcat/7.0.39/libexec/logs/catalina.out
 
-geoserver: /var/lib/geoserver_data/logs/geoserver.log
+<b>geoserver:</b> /var/lib/geoserver_data/logs/geoserver.log
+
+<b>uwsgi:</b> /var/log/uwsgi/app/ureport.log (Comes in handy when uwsgi restarts but you still get an nginx
+502 Bad Gateway
 
 
 
