@@ -356,6 +356,15 @@ You now have a script in this folder which should setup a geoserver database fro
     
 This script will create a databse as your local user on localhost with the default postgres port. You can pass in these parameters.
     
+    
+Install the postgis extension. You will need this if your shape files are to be mapped to the correct coorinate systems:
+
+    $ psql geoserver
+    geoserver=# create extension postgis.
+
+Check that it created a table called spatial_ref_sys by running
+    geoserver=# \dt
+
 Now we need to tell geoserver to pick up this data dir...
     
     cd ~/tmp/geoserver
