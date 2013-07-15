@@ -223,7 +223,7 @@ Run the following command to generate the knife configuration file
 
 When prompted for chef server url, enter
 
-    'http://95.138.169.81:4000'
+    'http://162.13.42.251:4000'
 
 Edit `~/.chef/knife.rb` and make the following changes:
 
