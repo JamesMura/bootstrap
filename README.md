@@ -203,7 +203,7 @@ Check that the following folder stucture is present on your local machine
     
     $ gem install knife-rackspace
 
-In your browser, Go to the Chef Server at http://95.138.169.81:4040/clients and create a client using the "Create" tab.
+In your browser, Go to the Chef Server at http://162.13.42.251:4040/clients and create a client using the "Create" tab.
 
 Enter a client name (your name), tick the box marking your client as an admin and click create. This will generate a private/public key pair that will be associated with the client you create. Save it as:
         
